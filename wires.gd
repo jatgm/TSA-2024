@@ -7,6 +7,9 @@ signal shake_cam
 signal freeze_cat
 signal unfreeze_cat
 
+func _process(delta):
+	print(current_hovering)
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
@@ -69,3 +72,21 @@ func _on_yellow_wire_mouse_entered():
 
 func _on_dialog_player_done():
 	unfreeze_cat.emit()
+
+
+func _on_blue_wire_mouse_exited():
+	current_hovering = ""
+
+
+func _on_red_wire_mouse_exited():
+	current_hovering = ""
+
+
+func _on_green_wire_mouse_exited():
+	current_hovering = ""
+
+
+func _on_yellow_wire_mouse_exited():
+	current_hovering = ""
+
+
