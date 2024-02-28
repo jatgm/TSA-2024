@@ -1,0 +1,5 @@
+Instructions to run the game
+1. Unzip folder (if it's zipped)
+2. Make sure build1.exe and build1.pck are in the same directory
+3. Run build1.exe
+4. If Microsoft Defender SmartScreen pops up, click More info and click Run anyway

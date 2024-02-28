@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxa1oed02kwdv"
+path="res://.godot/imported/Rain And Thunder Strikes-SoundBible.com-2084356876.mp3-ec2a35d5d7880870cf4abf226a9e1360.mp3str"
+
+[deps]
+
+source_file="res://Audio/Rain And Thunder Strikes-SoundBible.com-2084356876.mp3"
+dest_files=["res://.godot/imported/Rain And Thunder Strikes-SoundBible.com-2084356876.mp3-ec2a35d5d7880870cf4abf226a9e1360.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

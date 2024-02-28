@@ -1,0 +1,27 @@
+{
+	"1" : {
+		"name" : "Dog",
+		"dialogue" : "Get lost! What do you want?",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "Cat",
+		"dialogue" : "Hey! I was wondering if you had any money?",
+		"expression" : "Sad"
+	},
+	"3" : {
+		"name" : "Dog",
+		"dialogue" : "No! You're disturbing me... scram!",
+		"expression" : "Sad"
+	},
+    "4" : {
+		"name" : "Cat",
+		"dialogue" : "What's that behind you?",
+		"expression" : "Sad"
+	},
+	"5" : {
+		"name" : "Dog",
+		"dialogue" : "... Nothing!! You weren't supposed to see that... :(",
+		"expression" : "Sad"
+	}
+}

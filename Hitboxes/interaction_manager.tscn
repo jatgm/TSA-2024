@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2gxsjplum3s0"]
+
+[ext_resource type="Script" path="res://Hitboxes/interaction_manager.gd" id="1_bkejs"]
+[ext_resource type="AudioStream" uid="uid://bbgitkp2sb6r4" path="res://Audio/click.wav" id="2_n5i0d"]
+
+[node name="InteractionManager" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_bkejs")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+
+[node name="Bound" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Bound"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_n5i0d")
+volume_db = 2.0
+
+[connection signal="area_entered" from="." to="." method="_on_interaction_manager_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_interaction_manager_area_exited"]
+[connection signal="area_entered" from="Bound" to="." method="_on_bound_area_entered"]
+[connection signal="area_exited" from="Bound" to="." method="_on_bound_area_exited"]

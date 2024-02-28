@@ -1,0 +1,17 @@
+{
+	"1" : {
+		"name" : "",
+		"dialogue" : "A note...?",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "",
+		"dialogue" : "... missing cat? I'm a missing cat!      What if my owner is looking for me?",
+		"expression" : "Sad"
+	},
+	"3" : {
+		"name" : "",
+		"dialogue" : "'Call (425) 000-000 to report any       information.' That's it! That's it!",
+		"expression" : "Sad"
+	}
+}

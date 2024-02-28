@@ -1,0 +1,131 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5s33kn80k8xh"]
+
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ktwsw"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/coin_interaction.gd" id="2_y72ks"]
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_i8obh"]
+[ext_resource type="Texture2D" uid="uid://dqfnl5w4tijqa" path="res://Art/Quarter_coin_Sprite.png" id="4_jvyav"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="5_tk350"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/coin_dialog_interaction.gd" id="6_60vck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qac45"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3taf"]
+shader = ExtResource("3_i8obh")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1a27"]
+shader = ExtResource("3_i8obh")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="Animation" id="Animation_bp0me"]
+resource_name = "FadeMessage"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(4.92458, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_glxpe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0yx6s"]
+_data = {
+"FadeMessage": SubResource("Animation_bp0me"),
+"RESET": SubResource("Animation_glxpe")
+}
+
+[node name="Coin" type="Node2D"]
+position = Vector2(514, -139)
+
+[node name="InteractionManager" parent="." instance=ExtResource("1_ktwsw")]
+position = Vector2(-147, -6)
+script = ExtResource("2_y72ks")
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+position = Vector2(13, 32)
+shape = SubResource("RectangleShape2D_qac45")
+
+[node name="Bound" parent="InteractionManager" index="1"]
+position = Vector2(9, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_n3taf")
+position = Vector2(11, 31)
+texture = ExtResource("4_jvyav")
+
+[node name="Sprite2D2" type="Sprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_s1a27")
+position = Vector2(15, 33)
+texture = ExtResource("4_jvyav")
+
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("5_tk350")]
+script = ExtResource("6_60vck")
+scene_file_text = "res://json/coin_dialogue.json"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0yx6s")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 143.0
+offset_right = 74.0
+offset_bottom = 169.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Unlocked Phonebooth"
+
+[editable path="InteractionManager"]

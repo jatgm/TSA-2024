@@ -1,0 +1,502 @@
+[gd_scene load_steps=24 format=3 uid="uid://brw0p47a2i52p"]
+
+[ext_resource type="Script" path="res://objects/phonebooth.gd" id="1_kkqy8"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/phonebooth_manager.gd" id="3_uaxij"]
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_v6rds"]
+[ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="4_82j1o"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="6_316up"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/first_time_inside_phonebooth_interaction.gd" id="7_0fywn"]
+[ext_resource type="Script" path="res://objects/UI.gd" id="8_1pd2j"]
+[ext_resource type="Texture2D" uid="uid://bqxnjmc1g5csc" path="res://Art/Tiles/cracks3.png" id="8_vo3sx"]
+[ext_resource type="Texture2D" uid="uid://b3k1ogiygsflf" path="res://Art/Tiles/cracks2.png" id="9_ap2a8"]
+[ext_resource type="AudioStream" uid="uid://c5ebtlf5i5j2f" path="res://Audio/explosion.wav" id="11_t0c8y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqdqw"]
+size = Vector2(28, 47)
+
+[sub_resource type="Animation" id="Animation_5ucq0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3pw66"]
+resource_name = "complete_level"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wg4lx"]
+_data = {
+"RESET": SubResource("Animation_5ucq0"),
+"complete_level": SubResource("Animation_3pw66")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gws"]
+size = Vector2(20, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn5mb"]
+size = Vector2(122, 131)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r706y"]
+shader = ExtResource("3_v6rds")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hvpin"]
+polygon = PackedVector2Array(-14, -31, -13, -31, -13, -33, -12, -33, -12, -35, -10, -35, -10, -36, -8, -36, -8, -37, -6, -37, -6, -38, 7, -38, 7, -37, 9, -37, 9, -36, 11, -36, 11, -35, 13, -35, 13, -33, 14, -33, 14, -31, 15, -31, 15, -19, 14, -19, 14, -14, 15, -14, 15, 27, 14, 27, 14, 28, -13, 28, -13, 27, -14, 27, -14, -14, -13, -14, -13, -19, -14, -19)
+
+[sub_resource type="Animation" id="Animation_r2hq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blackbars/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-288, 552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-264, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hvm8o"]
+resource_name = "add_blackbars"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blackbars/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-288, 648), Vector2(-282, 610)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-264, -96), Vector2(-264, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_56c18"]
+resource_name = "remove_blackbars"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blackbars/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-282, 610), Vector2(-288, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-264, 0), Vector2(-264, -96)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vodbv"]
+_data = {
+"RESET": SubResource("Animation_r2hq6"),
+"add_blackbars": SubResource("Animation_hvm8o"),
+"remove_blackbars": SubResource("Animation_56c18")
+}
+
+[node name="Phonebooth" type="Node2D"]
+z_index = 1
+position = Vector2(752, 134)
+script = ExtResource("1_kkqy8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_jqdqw")
+
+[node name="LevelCompleteAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CompleteLevel/Label")
+libraries = {
+"": SubResource("AnimationLibrary_wg4lx")
+}
+
+[node name="CompleteLevel" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="CompleteLevel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.0
+offset_top = -22.5
+offset_right = -176.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Level One Complete!"
+
+[node name="InteractionManager" parent="." instance=ExtResource("1_ve2gn")]
+position = Vector2(420.067, -77.859)
+script = ExtResource("3_uaxij")
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+position = Vector2(-420.067, 83.859)
+shape = SubResource("RectangleShape2D_j2gws")
+
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+position = Vector2(-420.067, 77.859)
+shape = SubResource("RectangleShape2D_nn5mb")
+
+[node name="Sprite2d" type="Sprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_r706y")
+position = Vector2(-420.067, 77.859)
+texture = ExtResource("4_82j1o")
+
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("6_316up")]
+script = ExtResource("7_0fywn")
+scene_file_text = "res://json/phonebooth_dialogue.json"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hvpin")
+
+[node name="Dim" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Dim"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.231373, 0.231373, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("8_1pd2j")
+
+[node name="ColorRect2" type="ColorRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -261.5
+offset_right = 133.0
+offset_bottom = 261.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.0627451, 0.0235294, 1)
+
+[node name="Label" type="Label" parent="UI/ColorRect2"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 35.0
+offset_right = 228.0
+offset_bottom = 77.0
+text = "(xxx) xxx-xxxx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -226.5
+offset_right = 95.0
+offset_bottom = -183.5
+grow_horizontal = 2
+grow_vertical = 2
+editable = false
+
+[node name="Button0" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = 123.0
+offset_right = 39.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -147.5
+offset_right = -43.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button2" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -147.5
+offset_right = 39.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button3" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -147.5
+offset_right = 121.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("8_vo3sx")
+
+[node name="Button4" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -57.5
+offset_right = -43.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button5" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -57.5
+offset_right = 39.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("9_ap2a8")
+
+[node name="Button6" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -57.5
+offset_right = 121.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button7" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = 32.5
+offset_right = -43.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button8" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = 32.5
+offset_right = 39.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("8_vo3sx")
+
+[node name="Button9" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = 32.5
+offset_right = 121.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("11_t0c8y")
+bus = &"SFX"
+
+[node name="blackbars" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="blackbars"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.0
+offset_right = 1452.0
+offset_bottom = 38.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="blackbars"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = 552.0
+offset_right = 1428.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Dim")
+libraries = {
+"": SubResource("AnimationLibrary_vodbv")
+}
+
+[connection signal="enter_phonebooth" from="InteractionManager" to="." method="_on_interaction_manager_enter_phonebooth"]
+[connection signal="finish_first_time_dialog" from="InteractionManager/DialogPlayer" to="." method="_on_dialog_player_finish_first_time_dialog"]
+[connection signal="pressed" from="UI/ColorRect2/Button0" to="UI" method="_on_button_0_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button1" to="UI" method="_on_button_1_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button2" to="UI" method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button3" to="UI" method="_on_button_3_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button4" to="UI" method="_on_button_4_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button5" to="UI" method="_on_button_5_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button6" to="UI" method="_on_button_6_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button7" to="UI" method="_on_button_7_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button8" to="UI" method="_on_button_8_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button9" to="UI" method="_on_button_9_pressed"]
+
+[editable path="InteractionManager"]

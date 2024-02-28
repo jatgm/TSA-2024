@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyelnsseuf60e"]
+
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_tec10"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/highlightinteraction.gd" id="2_b0fpm"]
+[ext_resource type="Texture2D" uid="uid://dkflo8t8vxwyi" path="res://Art/Tiles/note.png" id="2_mfq1p"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="3_jj2p1"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/note_dialog_interaction.gd" id="4_kxm83"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="4_nqnyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ip41k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w18vd"]
+size = Vector2(94, 90)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k70i6"]
+shader = ExtResource("1_tec10")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[node name="Note" type="Node2D"]
+z_index = 1
+
+[node name="InteractionManager" parent="." instance=ExtResource("3_jj2p1")]
+position = Vector2(528, 146)
+script = ExtResource("2_b0fpm")
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+shape = SubResource("RectangleShape2D_ip41k")
+
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_w18vd")
+
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("4_nqnyq")]
+script = ExtResource("4_kxm83")
+scene_file_text = "res://json/world_dialogue.json"
+
+[node name="Sprite2d" type="Sprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_k70i6")
+texture = ExtResource("2_mfq1p")
+
+[editable path="InteractionManager"]

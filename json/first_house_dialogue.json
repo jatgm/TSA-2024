@@ -1,0 +1,17 @@
+{
+	"1" : {
+		"name" : "",
+		"dialogue" : "Ugh... this doorbell isn't ringing. How am I supposed to get my owner?",
+		"expression" : "Happy"
+	},
+    "2" : {
+		"name" : "",
+		"dialogue" : "Maybe I should go over to that utility shed eastward and shut off the electricity...",
+		"expression" : "Happy"
+	},
+	"3" : {
+		"name" : "",
+		"dialogue" : "Then maybe they'll come out?",
+		"expression" : "Happy"
+	}
+}

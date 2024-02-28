@@ -1,0 +1,27 @@
+{
+	"1" : {
+		"name" : "Homeowner",
+		"dialogue" : "HEY! WHO DID THAT?",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "Cat",
+		"dialogue" : "Oh no...",
+		"expression" : "Happy"
+	},
+	"3" : {
+		"name" : "Homeowner",
+		"dialogue" : "FIRST I LOSE MY CAT... NOW THIS???",
+		"expression" : "Happy"
+	},
+	"4" : {
+		"name" : "",
+		"dialogue" : "What! That guy lost his cat! It sounded like that guy was talking from my east...",
+		"expression" : "Happy"
+	},
+	"5" : {
+		"name" : "",
+		"dialogue" : "Maybe I should go east to check it out...",
+		"expression" : "Happy"
+	}
+}

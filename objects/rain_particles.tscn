@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4vh4shebjev8"]
+
+[ext_resource type="AudioStream" uid="uid://3lpmfauq102c" path="res://Audio/20 Minutes of Light Rain Sounds for Focus, Relaxing and Sleep 🌧️ Epidemic Ambience.mp3" id="1_4std3"]
+[ext_resource type="AudioStream" uid="uid://cdtx7shxmx82f" path="res://Audio/mutedrain.mp3" id="2_q6lp5"]
+[ext_resource type="AudioStream" uid="uid://bdngvgonjt718" path="res://Audio/lightningclap.mp3" id="3_dte4e"]
+
+[node name="RainParticles" type="CPUParticles2D"]
+position = Vector2(489, 57)
+amount = 1000
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(200, 200)
+gravity = Vector2(-30, 300)
+
+[node name="RainSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4std3")
+bus = &"Ambience"
+
+[node name="MuffledRainSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_q6lp5")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Lightning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dte4e")
+volume_db = -7.0
+bus = &"SFX"

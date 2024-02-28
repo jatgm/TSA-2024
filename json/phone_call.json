@@ -1,0 +1,17 @@
+{
+	"1" : {
+		"name" : "Cat",
+		"dialogue" : "Hello...? Pick up!! Anyone, pick up!",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "???",
+		"dialogue" : "Your call has been forwarded to an automated voice messaging system.",
+		"expression" : "Happy"
+	},
+	"3" : {
+		"name" : "???",
+		"dialogue" : "Hello! Anyone calling about my cat, please come to my house- it's the closest house to the phonebooth!",
+		"expression" : "Happy"
+	}
+}

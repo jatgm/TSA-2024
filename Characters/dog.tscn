@@ -1,0 +1,489 @@
+[gd_scene load_steps=35 format=3 uid="uid://lhemi3udisau"]
+
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_5xnwy"]
+[ext_resource type="Texture2D" uid="uid://dqm0bt5mljyx" path="res://Art/doghead.png" id="1_av5sx"]
+[ext_resource type="Script" path="res://Characters/dog.gd" id="1_klys3"]
+[ext_resource type="Texture2D" uid="uid://l0q27e8tfugq" path="res://Art/dog.png" id="1_tn4c4"]
+[ext_resource type="Script" path="res://Characters/GameOverScreen.gd" id="2_sc27j"]
+[ext_resource type="Script" path="res://Characters/dog_sprite.gd" id="3_b358l"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="4_sk5sx"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/dog_interaction.gd" id="5_0ritu"]
+[ext_resource type="Texture2D" uid="uid://bxrpnf6u24any" path="res://Art/upside_down_dogheda.png" id="7_tuh1v"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="8_rvcv7"]
+[ext_resource type="AudioStream" uid="uid://cwfq4t1yediib" path="res://Audio/hurt.wav" id="11_jnkib"]
+
+[sub_resource type="Animation" id="Animation_8yd3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label3:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kqauj"]
+resource_name = "blinking"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label3:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hmy1f"]
+_data = {
+"RESET": SubResource("Animation_8yd3h"),
+"blinking": SubResource("Animation_kqauj")
+}
+
+[sub_resource type="Animation" id="Animation_j3vl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y7g7t"]
+resource_name = "damage_screen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.207843), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gk6o"]
+_data = {
+"RESET": SubResource("Animation_j3vl4"),
+"damage_screen": SubResource("Animation_y7g7t")
+}
+
+[sub_resource type="Animation" id="Animation_rrrrj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sitting"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageIndication/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InteractionManager/dog_sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InteractionManager/dog_sprite/frame_0_occluder:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InteractionManager/dog_sprite/frame_1_occluder:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ej20e"]
+resource_name = "move down"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+
+[sub_resource type="Animation" id="Animation_1nx7n"]
+resource_name = "move left"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/dog_sprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.04),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [45],
+"method": &"addrotation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_neky6"]
+resource_name = "move right"
+length = 0.08
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/dog_sprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.04),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-45],
+"method": &"addrotation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_01h6x"]
+resource_name = "move up"
+length = 0.16
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"head", &"upside_down_head"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7o7kn"]
+_data = {
+"RESET": SubResource("Animation_rrrrj"),
+"move down": SubResource("Animation_ej20e"),
+"move left": SubResource("Animation_1nx7n"),
+"move right": SubResource("Animation_neky6"),
+"move up": SubResource("Animation_01h6x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqhjb"]
+size = Vector2(38, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mbas"]
+size = Vector2(20, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywtc5"]
+size = Vector2(26, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gonp"]
+size = Vector2(240, 176)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv4ij"]
+resource_local_to_scene = true
+shader = ExtResource("1_5xnwy")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv4cq"]
+atlas = ExtResource("1_tn4c4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux6ed"]
+atlas = ExtResource("1_tn4c4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3qvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_av5sx")
+}],
+"loop": false,
+"name": &"head",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv4cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux6ed")
+}],
+"loop": true,
+"name": &"sitting",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_tuh1v")
+}],
+"loop": false,
+"name": &"upside_down_head",
+"speed": 0.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ejj0u"]
+polygon = PackedVector2Array(9, -1, 9, 3, 10, 3, 10, 4, 11, 4, 11, 6, 12, 6, 12, 10, 13, 10, 13, 13, 12, 13, 12, 14, 9, 14, 9, 15, 8, 15, 8, 16, 7, 16, 7, 17, 2, 17, 2, 16, 1, 16, 1, 15, -1, 15, -1, 16, -2, 16, -2, 17, -7, 17, -7, 16, -8, 16, -8, 15, -9, 15, -9, 14, -12, 14, -12, 13, -13, 13, -13, 10, -12, 10, -12, 6, -11, 6, -11, 4, -10, 4, -10, 3, -9, 3, -9, -1, -10, -1, -10, -2, -11, -2, -11, -8, -10, -8, -10, -10, -9, -10, -9, -13, -10, -13, -10, -16, -9, -16, -9, -17, -6, -17, -6, -15, 6, -15, 6, -17, 9, -17, 9, -16, 10, -16, 10, -13, 9, -13, 9, -10, 10, -10, 10, -8, 11, -8, 11, -2, 10, -2, 10, -1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g500a"]
+polygon = PackedVector2Array(-9, -16, -6, -16, -6, -14, 6, -14, 6, -16, 9, -16, 9, -15, 10, -15, 10, -14, 11, -14, 11, -13, 10, -13, 10, -12, 9, -12.039, 9, -9, 10, -9, 10, -7, 11, -7, 11, -1, 10, -1, 10, 0, 9, 0, 9, 3, 10, 3, 10, 4, 11, 4, 11, 6, 12, 6, 12, 10, 13, 10, 13, 13, 12, 13, 12, 14, 9, 14, 9, 15, 8, 15, 8, 16, 7, 16, 7, 17, 2, 17, 2, 16, 1, 16, 1, 15, -1, 15, -1, 16, -2, 16, -2, 17, -7, 17, -7, 16, -8, 16, -8, 15, -9, 15, -9, 14, -12, 14, -12, 13, -13, 13, -13, 10, -12, 10, -12, 6, -11, 6, -11, 4, -10, 4, -10, 3, -9, 3, -9, 0, -10, 0, -10, -1, -11, -1, -11, -7, -10, -7, -10, -9, -9, -9, -9, -12, -10, -12, -10, -13, -11, -13, -11, -14, -10, -14, -10, -15, -9, -15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ak6dg"]
+polygon = PackedVector2Array(-9, -11, -6, -11, -6, -9, 6, -9, 6, -11, 9, -11, 9, -10, 10, -10, 10, -7, 9, -7, 9, -4, 10, -4, 10, -2, 11, -2, 11, 4, 10, 4, 10, 5, 9, 5, 9, 6, 7, 6, 7, 7, 5, 7, 5, 6, -5, 6, -5, 7, -7, 7, -7, 6, -9, 6, -9, 5, -10, 5, -10, 4, -11, 4, -11, -2, -10, -2, -10, -4, -9, -4, -9, -7, -10, -7, -10, -10, -9, -10)
+
+[node name="dog" type="CharacterBody2D" groups=["dogs"]]
+y_sort_enabled = true
+script = ExtResource("1_klys3")
+metadata/_edit_group_ = true
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_sc27j")
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.698039, 0, 0, 0.454902)
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.0
+offset_top = 117.0
+offset_right = 221.0
+offset_bottom = 226.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 77
+text = "GAME OVER"
+
+[node name="Label2" type="Label" parent="GameOverScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = 25.0
+offset_right = 249.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "\"You can't run... but you can hide!\""
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="GameOverScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -95.0
+offset_right = 315.5
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "You were caught and returned your money!"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="GameOverScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = 95.0
+offset_right = 236.5
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Press [E] to continue..."
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_hmy1f")
+}
+
+[node name="DamageIndication" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="DamageIndication"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageIndication"]
+libraries = {
+"": SubResource("AnimationLibrary_1gk6o")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7o7kn")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_eqhjb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6mbas")
+
+[node name="InteractionManager" parent="." instance=ExtResource("4_sk5sx")]
+script = ExtResource("5_0ritu")
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+shape = SubResource("RectangleShape2D_ywtc5")
+
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+shape = SubResource("RectangleShape2D_3gonp")
+
+[node name="dog_sprite" type="AnimatedSprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_kv4ij")
+sprite_frames = SubResource("SpriteFrames_o3qvt")
+animation = &"sitting"
+autoplay = "sitting"
+script = ExtResource("3_b358l")
+
+[node name="frame_0_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_ejj0u")
+
+[node name="frame_1_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_g500a")
+
+[node name="dog_head_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+occluder = SubResource("OccluderPolygon2D_ak6dg")
+
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("8_rvcv7")]
+scene_file_text = "res://json/dog_dialogue.json"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_jnkib")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="leave" from="InteractionManager" to="." method="_on_interaction_manager_leave"]
+[connection signal="start" from="InteractionManager" to="." method="_on_interaction_manager_start"]
+[connection signal="animation_changed" from="InteractionManager/dog_sprite" to="InteractionManager/dog_sprite" method="_on_animation_changed"]
+[connection signal="frame_changed" from="InteractionManager/dog_sprite" to="InteractionManager/dog_sprite" method="_on_frame_changed"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+
+[editable path="InteractionManager"]

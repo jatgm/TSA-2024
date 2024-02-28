@@ -1,0 +1,12 @@
+{
+	"1" : {
+		"name" : "Sticky Note",
+		"dialogue" : "Blue sheep are not Ready to Yield their Giant wool.",
+		"expression" : "Happy"
+	},
+    "2" : {
+		"name" : "Cat",
+		"dialogue" : "Huh... interesting... what's up with the capitalization?",
+		"expression" : "Happy"
+	}
+}

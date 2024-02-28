@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3 uid="uid://brpwalubv8yfm"]
+
+[ext_resource type="Script" path="res://Levels/tsa.gd" id="1_antgr"]
+[ext_resource type="PackedScene" uid="uid://d3oc660gsm8y2" path="res://Levels/intro.tscn" id="1_cblco"]
+[ext_resource type="Script" path="res://Levels/PauseMenu.gd" id="3_u3a1h"]
+[ext_resource type="Script" path="res://Levels/FPSCounter.gd" id="4_24j20"]
+
+[node name="TSA" type="Node"]
+process_mode = 3
+script = ExtResource("1_antgr")
+
+[node name="introscene" parent="." instance=ExtResource("1_cblco")]
+process_mode = 1
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+layer = 100
+visible = false
+script = ExtResource("3_u3a1h")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.356863)
+
+[node name="Selector" type="VBoxContainer" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -50.5
+offset_right = 46.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/Selector"]
+layout_mode = 2
+text = "Resume
+"
+
+[node name="Settings" type="Button" parent="PauseMenu/Selector"]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Quit" type="Button" parent="PauseMenu/Selector"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="Settings" type="VBoxContainer" parent="PauseMenu"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -20.0
+offset_right = 117.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master Volume
+"
+
+[node name="MasterSlider" type="HSlider" parent="PauseMenu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Music Volume
+"
+
+[node name="MusicSlider" type="HSlider" parent="PauseMenu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="SFXLabel" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SFX Volume
+"
+
+[node name="SFXSlider" type="HSlider" parent="PauseMenu/Settings"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Settings"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="PauseMenu/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "FPS Max: 
+"
+vertical_alignment = 1
+
+[node name="FPSEnter" type="SpinBox" parent="PauseMenu/Settings/HBoxContainer"]
+layout_mode = 2
+max_value = 300.0
+suffix = "FPS"
+
+[node name="BackButton" type="Button" parent="PauseMenu/Settings"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+
+[node name="FPSCounter" type="CanvasLayer" parent="."]
+layer = 128
+visible = false
+script = ExtResource("4_24j20")
+
+[node name="Label" type="Label" parent="FPSCounter"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "FPS:"
+
+[connection signal="pressed" from="PauseMenu/Selector/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Selector/Settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/Selector/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="value_changed" from="PauseMenu/Settings/MasterSlider" to="PauseMenu" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/MusicSlider" to="PauseMenu" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/SFXSlider" to="PauseMenu" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/HBoxContainer/FPSEnter" to="PauseMenu" method="_on_fps_enter_value_changed"]
+[connection signal="pressed" from="PauseMenu/Settings/BackButton" to="PauseMenu" method="_on_back_button_pressed"]

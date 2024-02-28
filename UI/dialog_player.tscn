@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://yd6y3s48r64d"]
+
+[ext_resource type="Script" path="res://UI/dialog_player.gd" id="1_djw81"]
+[ext_resource type="Texture2D" uid="uid://yy0pn4cc8odb" path="res://Art/Dialogue-Background.png" id="1_niat1"]
+[ext_resource type="AudioStream" uid="uid://druh37kyxxmxh" path="res://Audio/blipSelect.wav" id="3_r3tit"]
+
+[node name="DialogPlayer" type="CanvasLayer" groups=["dialog_players"]]
+process_mode = 1
+layer = 2
+visible = false
+follow_viewport_scale = 53.142
+script = ExtResource("1_djw81")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -324.0
+offset_top = -258.0
+offset_right = 324.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_niat1")
+
+[node name="NameBackground" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -345.0
+offset_top = -329.0
+offset_right = -108.0
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_niat1")
+
+[node name="Text" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = -217.0
+offset_right = 267.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
+max_lines_visible = 3
+
+[node name="NameText" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -321.0
+offset_top = -304.0
+offset_right = -132.0
+offset_bottom = -258.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 1
+max_lines_visible = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.07
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_r3tit")
+volume_db = -7.0
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,27 @@
+{
+	"1" : {
+		"name" : "",
+		"dialogue" : "A phonebooth!",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "",
+		"dialogue" : "Maybe I can call my owner with this!",
+		"expression" : "Sad"
+	},
+	"3" : {
+		"name" : "",
+		"dialogue" : "...",
+		"expression" : "Sad"
+	},
+    "4" : {
+		"name" : "",
+		"dialogue" : "It needs two coins. Where am I going to be able to find that??",
+		"expression" : "Sad"
+	},
+	"5" : {
+		"name" : "",
+		"dialogue" : "A poster in the booth says 'rich dogs lay north'... interesting...",
+		"expression" : "Sad"
+	}
+}

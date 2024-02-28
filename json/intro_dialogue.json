@@ -1,0 +1,42 @@
+{
+	"1" : {
+		"name" : "",
+		"dialogue" : "Where are we going?",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "",
+		"dialogue" : "...",
+		"expression" : "Sad"
+	},
+	"3" : {
+		"name" : "",
+		"dialogue" : "Oh! I know!",
+		"expression" : "Sad"
+	},
+	"4" : {
+		"name" : "",
+		"dialogue" : "We must be going on a road trip!",
+		"expression" : "Sad"
+	},
+	"5" : {
+		"name" : "",
+		"dialogue" : "...",
+		"expression" : "Sad"
+	},
+	"6" : {
+		"name" : "",
+		"dialogue" : "I wonder where we're going.",
+		"expression" : "Sad"
+	},
+	"7" : {
+		"name" : "",
+		"dialogue" : "Pause",
+		"expression" : "Sad"
+	},
+	"8" : {
+		"name" : "",
+		"dialogue" : "It's awfully dark outside and I can't   see-",
+		"expression" : "Sad"
+	}
+}

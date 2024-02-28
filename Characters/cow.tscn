@@ -1,0 +1,140 @@
+[gd_scene load_steps=20 format=3 uid="uid://ot0ciwk4aly"]
+
+[ext_resource type="Script" path="res://Characters/cow.gd" id="1_dlo2a"]
+[ext_resource type="Texture2D" uid="uid://ca6wljpj6kji4" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_enxwb"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="3_e2uo4"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="5_kwekf"]
+
+[sub_resource type="Animation" id="Animation_5w3qr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5abus"]
+resource_name = "idle"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 0, 2, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_fsysh"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm8w5"]
+_data = {
+"RESET": SubResource("Animation_5w3qr"),
+"idle": SubResource("Animation_5abus"),
+"walk": SubResource("Animation_fsysh")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7d24s"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_exifk"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qelk3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ega3u"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ddlg"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2jhqv"]
+states/idle/node = SubResource("AnimationNodeAnimation_7d24s")
+states/idle/position = Vector2(393, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_exifk")
+states/walk/position = Vector2(569, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_qelk3"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_ega3u"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_6ddlg")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_o7c4n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px4un"]
+size = Vector2(22, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owc8e"]
+size = Vector2(28, 21.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqbkm"]
+size = Vector2(72, 72)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_geapy"]
+polygon = PackedVector2Array(-9, 10, -8, 10, -8, 12, -6, 12, -6, 10, -2, 10, -2, 12, 0, 12, 0, 10, 3, 10, 3, 12, 5, 12, 5, 8, 11, 8, 11, 7, 12, 7, 12, 3, 13, 3, 13, 2, 14, 2, 14, -1, 13, -1, 13, -2, 11, -2, 11, -1, 9, -1, 9, -3, 8, -3, 8, -4, 6, -4, 6, -2, 4, -2, 4, -4, 2, -4, 2, -3, 1, -3, 1, -2, 1, -1, 0, -1, 0, -2, -2, -2, -2, -1, -3, -1, -3, 0, -7, 0, -7, 1, -9, 1)
+
+[node name="Cow" type="CharacterBody2D"]
+script = ExtResource("1_dlo2a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jm8w5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_2jhqv")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_o7c4n")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_px4un")
+
+[node name="InteractionManager" parent="." instance=ExtResource("3_e2uo4")]
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+position = Vector2(1, 4.875)
+shape = SubResource("RectangleShape2D_owc8e")
+
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_oqbkm")
+
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("5_kwekf")]
+scene_file_text = "res://json/world_dialogue.json"
+
+[node name="Sprite2d" type="Sprite2D" parent="InteractionManager"]
+texture = ExtResource("2_enxwb")
+hframes = 3
+vframes = 2
+
+[node name="LightOccluder2d" type="LightOccluder2D" parent="InteractionManager/Sprite2d"]
+occluder = SubResource("OccluderPolygon2D_geapy")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="InteractionManager"]

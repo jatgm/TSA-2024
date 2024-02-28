@@ -1,0 +1,236 @@
+[gd_scene load_steps=24 format=3 uid="uid://0kla80l6fl5a"]
+
+[ext_resource type="Script" path="res://wires.gd" id="1_3o1bu"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_5gtvc"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/fusebox_interaction.gd" id="2_a0arb"]
+[ext_resource type="Texture2D" uid="uid://de4jhotgbb1h6" path="res://Art/fuseboxtest-1.png.png" id="3_8dv0d"]
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="4_eq1xk"]
+[ext_resource type="Texture2D" uid="uid://b4opnjxkn6piu" path="res://Art/fuseboxresize.png" id="4_q7vug"]
+[ext_resource type="Texture2D" uid="uid://cme22dc4r5u3r" path="res://Art/clippedbluewire.png" id="5_fib7y"]
+[ext_resource type="Texture2D" uid="uid://dp0b2dtgq23g1" path="res://Art/redwire.png" id="7_q3ekx"]
+[ext_resource type="Texture2D" uid="uid://dka7r483t141w" path="res://Art/clippedredwire.png" id="8_hy6il"]
+[ext_resource type="Texture2D" uid="uid://t4rgqbl5plbv" path="res://Art/greenwire.png" id="9_djg58"]
+[ext_resource type="Texture2D" uid="uid://cgwl00xdcgn4k" path="res://Art/clippedgreenwire.png" id="10_wfge3"]
+[ext_resource type="Texture2D" uid="uid://ctgjck3dm4dha" path="res://Art/yellowwire.png" id="11_ww805"]
+[ext_resource type="Texture2D" uid="uid://xlgmepyfrr6m" path="res://Art/clippedyellowwire.png" id="12_316fh"]
+[ext_resource type="AudioStream" uid="uid://c5ebtlf5i5j2f" path="res://Audio/explosion.wav" id="13_cp8ey"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="15_k8stu"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/fusebox.gd" id="16_pve4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik13i"]
+size = Vector2(49, 41.5622)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mva0o"]
+size = Vector2(122, 124)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qn6k"]
+shader = ExtResource("4_eq1xk")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7rw05"]
+load_path = "res://.godot/imported/bluewire (1).png-95955da6d77e792051a81e01a1db0f47.ctex"
+
+[sub_resource type="Animation" id="Animation_ks7dq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yw5gg"]
+resource_name = "complete_level"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmfcr"]
+_data = {
+"RESET": SubResource("Animation_ks7dq"),
+"complete_level": SubResource("Animation_yw5gg")
+}
+
+[node name="Wires" type="Node2D"]
+script = ExtResource("1_3o1bu")
+
+[node name="InteractionManager3" parent="." instance=ExtResource("1_5gtvc")]
+script = ExtResource("2_a0arb")
+
+[node name="CollisionShape2d" parent="InteractionManager3" index="0"]
+position = Vector2(1082.28, 110.219)
+shape = SubResource("RectangleShape2D_ik13i")
+
+[node name="CollisionShape2d" parent="InteractionManager3/Bound" index="0"]
+position = Vector2(1082, 110)
+shape = SubResource("RectangleShape2D_mva0o")
+
+[node name="Fuseboxtest-1png" type="Sprite2D" parent="InteractionManager3"]
+z_index = 1
+material = SubResource("ShaderMaterial_2qn6k")
+position = Vector2(1083, 110)
+texture = ExtResource("3_8dv0d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="InteractionManager3"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractionManager3/CanvasLayer"]
+position = Vector2(646, 324)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("4_q7vug")
+
+[node name="BlueWire" type="Control" parent="InteractionManager3/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -204.0
+offset_right = -96.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlueWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/BlueWire"]
+position = Vector2(41, 202.858)
+scale = Vector2(16.25, 13.9286)
+texture = SubResource("CompressedTexture2D_7rw05")
+
+[node name="CutBlueWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/BlueWire"]
+visible = false
+position = Vector2(41, 204)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("5_fib7y")
+
+[node name="RedWire" type="Control" parent="InteractionManager3/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -203.0
+offset_right = -19.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RedWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/RedWire"]
+position = Vector2(41, 203)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("7_q3ekx")
+
+[node name="CutRedWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/RedWire"]
+visible = false
+position = Vector2(41, 202.858)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("8_hy6il")
+
+[node name="GreenWire" type="Control" parent="InteractionManager3/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -203.0
+offset_right = 62.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GreenWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/GreenWire"]
+position = Vector2(41, 203)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("9_djg58")
+
+[node name="CutGreenWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/GreenWire"]
+visible = false
+position = Vector2(41, 202.858)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("10_wfge3")
+
+[node name="YellowWire" type="Control" parent="InteractionManager3/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 94.0
+offset_top = -203.0
+offset_right = 144.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YellowWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/YellowWire"]
+position = Vector2(41, 203)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("11_ww805")
+
+[node name="CutYellowWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/YellowWire"]
+visible = false
+position = Vector2(41, 202.858)
+scale = Vector2(16.25, 13.9286)
+texture = ExtResource("12_316fh")
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="InteractionManager3"]
+stream = ExtResource("13_cp8ey")
+bus = &"SFX"
+
+[node name="DialogPlayer" parent="InteractionManager3" instance=ExtResource("15_k8stu")]
+script = ExtResource("16_pve4r")
+scene_file_text = "res://json/shouting.json"
+
+[node name="CompleteLevel" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="CompleteLevel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -77.0
+offset_right = -236.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Level Two Complete!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bmfcr")
+}
+
+[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/BlueWire" to="." method="_on_blue_wire_mouse_entered"]
+[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/RedWire" to="." method="_on_red_wire_mouse_entered"]
+[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/GreenWire" to="." method="_on_green_wire_mouse_entered"]
+[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/YellowWire" to="." method="_on_yellow_wire_mouse_entered"]
+[connection signal="done" from="InteractionManager3/DialogPlayer" to="." method="_on_dialog_player_done"]
+
+[editable path="InteractionManager3"]
