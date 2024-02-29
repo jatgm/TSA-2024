@@ -72,3 +72,7 @@ func _on_wires_unfreeze_cat():
 
 func _on_house_3_freeze_cat():
 	moving = false
+
+
+func _on_dialog_player_unfreeze_cat():
+	moving = true

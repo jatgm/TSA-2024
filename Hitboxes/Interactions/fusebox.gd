@@ -1,6 +1,7 @@
 extends DialogPlayer
 	
 signal done
+signal unfreeze_cat
 
 func next_line():
 	if (current_index).to_int() < len(scene_text):
@@ -9,3 +10,4 @@ func next_line():
 		print("we finished")
 		finish()
 		done.emit()
+		unfreeze_cat.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://0kla80l6fl5a"]
+[gd_scene load_steps=25 format=3 uid="uid://0kla80l6fl5a"]
 
 [ext_resource type="Script" path="res://wires.gd" id="1_3o1bu"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_5gtvc"]
@@ -28,6 +28,8 @@ size = Vector2(122, 124)
 shader = ExtResource("4_eq1xk")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
 shader_parameter/opacity = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cg0hp"]
 
 [sub_resource type="Animation" id="Animation_ks7dq"]
 length = 0.001
@@ -104,116 +106,105 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_q7vug")
 
-[node name="BlueWire" type="Control" parent="InteractionManager3/CanvasLayer"]
-layout_mode = 3
-anchor_left = 0.404
-anchor_top = 0.5
-anchor_right = 0.404
-anchor_bottom = 0.5
-offset_left = -8.40802
-offset_top = -185.0
-offset_right = 45.592
-offset_bottom = 176.0
-
-[node name="BlueWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/BlueWire"]
-visible = false
-offset_left = -187.0
-offset_top = -34.0
-offset_right = -147.0
-offset_bottom = 6.00002
+[node name="BlueWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+offset_left = 270.0
+offset_top = 105.0
+offset_right = 310.0
+offset_bottom = 145.0
 scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("7_3lcfl")
+metadata/_edit_use_anchors_ = true
 
-[node name="CutBlueWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/BlueWire"]
-offset_left = -187.0
-offset_top = -34.0
-offset_right = -147.0
-offset_bottom = 6.00002
+[node name="CutBlueWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+visible = false
+offset_left = 270.0
+offset_top = 105.0
+offset_right = 310.0
+offset_bottom = 145.0
 scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("5_fib7y")
 
-[node name="RedWire" type="Control" parent="InteractionManager3/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -203.0
-offset_right = 5.0
-offset_bottom = 183.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RedWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/RedWire"]
-layout_mode = 0
-offset_left = -211.0
-offset_top = -21.0
-offset_right = -171.0
-offset_bottom = 19.0
+[node name="RedWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+offset_left = 320.0
+offset_top = 100.0
+offset_right = 360.0
+offset_bottom = 140.0
 scale = Vector2(12.3662, 10.84)
 texture = ExtResource("7_q3ekx")
+metadata/_edit_use_anchors_ = true
 
-[node name="CutRedWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/RedWire"]
+[node name="CutRedWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
 visible = false
-layout_mode = 0
-offset_left = -211.0
-offset_top = -21.0
-offset_right = -171.0
-offset_bottom = 19.0
+offset_left = 320.0
+offset_top = 100.0
+offset_right = 360.0
+offset_bottom = 140.0
 scale = Vector2(12.3662, 10.84)
 texture = ExtResource("8_hy6il")
 
-[node name="GreenWire" type="Control" parent="InteractionManager3/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 12.0
-offset_top = -203.0
-offset_right = 62.0
-offset_bottom = 183.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GreenWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/GreenWire"]
-position = Vector2(41, 203)
-scale = Vector2(16.25, 13.9286)
+[node name="GreenWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+offset_left = 411.0
+offset_top = 101.0
+offset_right = 852.0
+offset_bottom = 542.0
 texture = ExtResource("9_djg58")
+metadata/_edit_use_anchors_ = true
 
-[node name="CutGreenWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/GreenWire"]
+[node name="CutGreenWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
 visible = false
-position = Vector2(41, 202.858)
-scale = Vector2(16.25, 13.9286)
+offset_left = 411.0
+offset_top = 101.0
+offset_right = 852.0
+offset_bottom = 542.0
 texture = ExtResource("10_wfge3")
 
-[node name="YellowWire" type="Control" parent="InteractionManager3/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 94.0
-offset_top = -203.0
-offset_right = 144.0
-offset_bottom = 183.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="YellowWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/YellowWire"]
-position = Vector2(41, 203)
-scale = Vector2(16.25, 13.9286)
+[node name="YellowWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+offset_left = 487.0
+offset_top = 102.0
+offset_right = 917.0
+offset_bottom = 532.0
 texture = ExtResource("11_ww805")
+metadata/_edit_use_anchors_ = true
 
-[node name="CutYellowWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/YellowWire"]
+[node name="CutYellowWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
 visible = false
-position = Vector2(41, 202.858)
-scale = Vector2(16.25, 13.9286)
+offset_left = 487.0
+offset_top = 102.0
+offset_right = 917.0
+offset_bottom = 532.0
 texture = ExtResource("12_316fh")
+
+[node name="BlueButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
+offset_left = 447.0
+offset_top = 137.0
+offset_right = 502.0
+offset_bottom = 500.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
+metadata/_edit_use_anchors_ = true
+
+[node name="RedButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
+offset_left = 528.0
+offset_top = 137.0
+offset_right = 583.0
+offset_bottom = 500.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
+metadata/_edit_use_anchors_ = true
+
+[node name="GreenButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
+offset_left = 594.0
+offset_top = 146.0
+offset_right = 649.0
+offset_bottom = 509.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
+metadata/_edit_use_anchors_ = true
+
+[node name="YellowButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
+offset_left = 666.0
+offset_top = 143.0
+offset_right = 721.0
+offset_bottom = 506.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
+metadata/_edit_use_anchors_ = true
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="InteractionManager3"]
 stream = ExtResource("13_cp8ey")
@@ -247,14 +238,10 @@ libraries = {
 "": SubResource("AnimationLibrary_bmfcr")
 }
 
-[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/BlueWire" to="." method="_on_blue_wire_mouse_entered"]
-[connection signal="mouse_exited" from="InteractionManager3/CanvasLayer/BlueWire" to="." method="_on_blue_wire_mouse_exited"]
-[connection signal="gui_input" from="InteractionManager3/CanvasLayer/RedWire" to="." method="_on_red_wire_gui_input"]
-[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/RedWire" to="." method="_on_red_wire_mouse_entered"]
-[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/GreenWire" to="." method="_on_green_wire_mouse_entered"]
-[connection signal="mouse_exited" from="InteractionManager3/CanvasLayer/GreenWire" to="." method="_on_green_wire_mouse_exited"]
-[connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/YellowWire" to="." method="_on_yellow_wire_mouse_entered"]
-[connection signal="mouse_exited" from="InteractionManager3/CanvasLayer/YellowWire" to="." method="_on_yellow_wire_mouse_exited"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/BlueButtonNode" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/RedButtonNode" to="." method="_on_red_button_node_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/GreenButtonNode" to="." method="_on_green_button_node_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/YellowButtonNode" to="." method="_on_yellow_button_node_pressed"]
 [connection signal="done" from="InteractionManager3/DialogPlayer" to="." method="_on_dialog_player_done"]
 
 [editable path="InteractionManager3"]

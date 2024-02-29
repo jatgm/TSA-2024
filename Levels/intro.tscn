@@ -258,7 +258,7 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/opacity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ibtc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k67q"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
@@ -947,7 +947,6 @@ script = ExtResource("1_ahy1b")
 metadata/_edit_lock_ = true
 
 [node name="STARTSCREEN" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="STARTSCREEN"]
 anchors_preset = 15
@@ -1070,7 +1069,7 @@ volume_db = -7.0
 bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
-material = SubResource("ShaderMaterial_7ibtc")
+material = SubResource("ShaderMaterial_4k67q")
 metadata/_edit_lock_ = true
 
 [node name="Streetlamp" type="Sprite2D" parent="."]
@@ -1403,6 +1402,7 @@ position = Vector2(1084.5, 117.219)
 [connection signal="freeze_cat" from="Wires" to="cat" method="_on_wires_freeze_cat"]
 [connection signal="shake_cam" from="Wires" to="Camera2d" method="_on_wires_shake_cam"]
 [connection signal="unfreeze_cat" from="Wires" to="cat" method="_on_wires_unfreeze_cat"]
+[connection signal="unfreeze_cat" from="Wires/InteractionManager3/DialogPlayer" to="cat" method="_on_dialog_player_unfreeze_cat"]
 
 [editable path="Coin"]
 [editable path="Coin/InteractionManager"]
