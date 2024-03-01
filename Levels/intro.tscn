@@ -261,7 +261,7 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/opacity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_slobj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb1v6"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
@@ -950,39 +950,12 @@ size = Vector2(20, 121)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxlsa"]
 size = Vector2(29, 32)
 
-[sub_resource type="Animation" id="Animation_ks7dq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_yw5gg"]
+[sub_resource type="Animation" id="Animation_c12vx"]
 resource_name = "complete_level"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -994,20 +967,47 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
+tracks/1/path = NodePath("InteractionManager/CompleteLevel:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmfcr"]
+[sub_resource type="Animation" id="Animation_8u5tc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/CompleteLevel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8nyi"]
 _data = {
-"RESET": SubResource("Animation_ks7dq"),
-"complete_level": SubResource("Animation_yw5gg")
+"RESET": SubResource("Animation_8u5tc"),
+"complete_level": SubResource("Animation_c12vx")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufhv"]
@@ -1151,7 +1151,7 @@ volume_db = -7.0
 bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
-material = SubResource("ShaderMaterial_slobj")
+material = SubResource("ShaderMaterial_wb1v6")
 metadata/_edit_lock_ = true
 
 [node name="Streetlamp" type="Sprite2D" parent="."]
@@ -1529,7 +1529,7 @@ shape = SubResource("RectangleShape2D_yoxg1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HOUSE 3"]
 libraries = {
-"": SubResource("AnimationLibrary_bmfcr")
+"": SubResource("AnimationLibrary_c8nyi")
 }
 
 [node name="InteractionManager" parent="." instance=ExtResource("32_roq0d")]
