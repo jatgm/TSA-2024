@@ -23,40 +23,40 @@ func checkWinningConditions():
 			freeze_cat.emit()
 
 func reset():
-	$InteractionManager3/CanvasLayer/BlueWirePic.visible = true
-	$InteractionManager3/CanvasLayer/CutBlueWire.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/BlueWirePic.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/CutBlueWire.visible = false
 
-	$InteractionManager3/CanvasLayer/RedWirePic.visible = true
-	$InteractionManager3/CanvasLayer/CutRedWire.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/RedWirePic.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/CutRedWire.visible = false
 
-	$InteractionManager3/CanvasLayer/GreenWirePic.visible = true
-	$InteractionManager3/CanvasLayer/CutGreenWire.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/GreenWirePic.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/CutGreenWire.visible = false
 
-	$InteractionManager3/CanvasLayer/YellowWirePic.visible = true
-	$InteractionManager3/CanvasLayer/CutYellowWire.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/YellowWirePic.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/CutYellowWire.visible = false
 					
 
 func _on_button_pressed():
-	$InteractionManager3/CanvasLayer/BlueWirePic.visible = false
-	$InteractionManager3/CanvasLayer/CutBlueWire.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/BlueWirePic.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/CutBlueWire.visible = true
 	current_order += "b"
 	checkWinningConditions()
 
 func _on_red_button_node_pressed():
-	$InteractionManager3/CanvasLayer/RedWirePic.visible = false
-	$InteractionManager3/CanvasLayer/CutRedWire.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/RedWirePic.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/CutRedWire.visible = true
 	current_order += "r"
 	checkWinningConditions()
 
 func _on_green_button_node_pressed():
-	$InteractionManager3/CanvasLayer/GreenWirePic.visible = false
-	$InteractionManager3/CanvasLayer/CutGreenWire.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/GreenWirePic.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/CutGreenWire.visible = true
 	current_order += "g"
 	checkWinningConditions()
 
 func _on_yellow_button_node_pressed():
-	$InteractionManager3/CanvasLayer/YellowWirePic.visible = false
-	$InteractionManager3/CanvasLayer/CutYellowWire.visible = true
+	$InteractionManager3/CanvasLayer/TextureRect/YellowWirePic.visible = false
+	$InteractionManager3/CanvasLayer/TextureRect/CutYellowWire.visible = true
 	current_order += "y"
 	checkWinningConditions()
 

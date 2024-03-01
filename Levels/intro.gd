@@ -9,6 +9,8 @@ var first_time = 0
 func play_car_animation():
 	$Car/AnimationPlayer.play("car_animation")
 
+func _ready():
+	$STARTSCREEN.visible = true
 
 func _input(event):
 	if event is InputEventMouseButton:

@@ -88,6 +88,7 @@ position = Vector2(1083, 110)
 texture = ExtResource("3_8dv0d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="InteractionManager3"]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
 anchors_preset = 8
@@ -106,73 +107,89 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_q7vug")
 
-[node name="BlueWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
-offset_left = 270.0
-offset_top = 105.0
-offset_right = 310.0
-offset_bottom = 145.0
+[node name="BlueWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = -36.1149
+offset_top = -0.885266
+offset_right = -23.1149
+offset_bottom = 11.1147
 scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("7_3lcfl")
-metadata/_edit_use_anchors_ = true
+expand_mode = 1
 
-[node name="CutBlueWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+[node name="CutBlueWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
 visible = false
-offset_left = 270.0
-offset_top = 105.0
-offset_right = 310.0
-offset_bottom = 145.0
+layout_mode = 0
+offset_left = -36.1149
+offset_top = -0.885266
+offset_right = -23.1149
+offset_bottom = 11.1147
 scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("5_fib7y")
+expand_mode = 1
 
-[node name="RedWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
-offset_left = 320.0
-offset_top = 100.0
-offset_right = 360.0
-offset_bottom = 140.0
-scale = Vector2(12.3662, 10.84)
+[node name="RedWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = -16.6684
+offset_top = -0.885267
+offset_right = -3.66841
+offset_bottom = 11.1147
+scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("7_q3ekx")
-metadata/_edit_use_anchors_ = true
+expand_mode = 1
 
-[node name="CutRedWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+[node name="CutRedWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
 visible = false
-offset_left = 320.0
-offset_top = 100.0
-offset_right = 360.0
-offset_bottom = 140.0
-scale = Vector2(12.3662, 10.84)
+layout_mode = 0
+offset_left = -16.6684
+offset_top = -0.885267
+offset_right = -3.66841
+offset_bottom = 11.1147
+scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("8_hy6il")
+expand_mode = 1
 
-[node name="GreenWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
-offset_left = 411.0
-offset_top = 101.0
-offset_right = 852.0
-offset_bottom = 542.0
+[node name="GreenWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 4.01277
+offset_top = -0.885267
+offset_right = 17.0128
+offset_bottom = 11.1147
+scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("9_djg58")
-metadata/_edit_use_anchors_ = true
+expand_mode = 1
 
-[node name="CutGreenWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+[node name="CutGreenWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
 visible = false
-offset_left = 411.0
-offset_top = 101.0
-offset_right = 852.0
-offset_bottom = 542.0
+layout_mode = 0
+offset_left = 4.01277
+offset_top = -0.885267
+offset_right = 17.0128
+offset_bottom = 11.1147
+scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("10_wfge3")
+expand_mode = 1
 
-[node name="YellowWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
-offset_left = 487.0
-offset_top = 102.0
-offset_right = 917.0
-offset_bottom = 532.0
+[node name="YellowWirePic" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 24.6939
+offset_top = -0.885267
+offset_right = 37.6939
+offset_bottom = 11.1147
+scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("11_ww805")
-metadata/_edit_use_anchors_ = true
+expand_mode = 1
 
-[node name="CutYellowWire" type="TextureRect" parent="InteractionManager3/CanvasLayer"]
+[node name="CutYellowWire" type="TextureRect" parent="InteractionManager3/CanvasLayer/TextureRect"]
 visible = false
-offset_left = 487.0
-offset_top = 102.0
-offset_right = 917.0
-offset_bottom = 532.0
+layout_mode = 0
+offset_left = 24.694
+offset_top = -0.885
+offset_right = 37.694
+offset_bottom = 11.115
+scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("12_316fh")
+expand_mode = 1
 
 [node name="BlueButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
 offset_left = 447.0
@@ -180,7 +197,6 @@ offset_top = 137.0
 offset_right = 502.0
 offset_bottom = 500.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
-metadata/_edit_use_anchors_ = true
 
 [node name="RedButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
 offset_left = 528.0
@@ -188,7 +204,6 @@ offset_top = 137.0
 offset_right = 583.0
 offset_bottom = 500.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
-metadata/_edit_use_anchors_ = true
 
 [node name="GreenButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
 offset_left = 594.0
@@ -196,7 +211,6 @@ offset_top = 146.0
 offset_right = 649.0
 offset_bottom = 509.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
-metadata/_edit_use_anchors_ = true
 
 [node name="YellowButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
 offset_left = 666.0
@@ -204,7 +218,6 @@ offset_top = 143.0
 offset_right = 721.0
 offset_bottom = 506.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
-metadata/_edit_use_anchors_ = true
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="InteractionManager3"]
 stream = ExtResource("13_cp8ey")

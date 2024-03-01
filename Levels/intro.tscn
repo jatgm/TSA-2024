@@ -258,7 +258,7 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/opacity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k67q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_164ab"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
@@ -947,6 +947,7 @@ script = ExtResource("1_ahy1b")
 metadata/_edit_lock_ = true
 
 [node name="STARTSCREEN" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="STARTSCREEN"]
 anchors_preset = 15
@@ -1069,7 +1070,7 @@ volume_db = -7.0
 bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
-material = SubResource("ShaderMaterial_4k67q")
+material = SubResource("ShaderMaterial_164ab")
 metadata/_edit_lock_ = true
 
 [node name="Streetlamp" type="Sprite2D" parent="."]
@@ -1161,6 +1162,16 @@ libraries = {
 
 [node name="Phonebooth" parent="." instance=ExtResource("17_hoya0")]
 scale = Vector2(0.991824, 1.00623)
+
+[node name="ColorRect" parent="Phonebooth/blackbars" index="0"]
+offset_left = -840.0
+offset_right = 876.0
+
+[node name="ColorRect2" parent="Phonebooth/blackbars" index="1"]
+offset_left = -864.0
+offset_top = -96.0
+offset_right = 852.0
+offset_bottom = -58.0
 
 [node name="Decals" type="Node" parent="."]
 
@@ -1389,6 +1400,30 @@ texture = ExtResource("37_0ys2d")
 
 [node name="CollisionShape2d" parent="Wires/InteractionManager3" index="0"]
 position = Vector2(1084.5, 117.219)
+
+[node name="BlueWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="0"]
+layout_mode = 0
+
+[node name="CutBlueWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="1"]
+layout_mode = 0
+
+[node name="RedWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="2"]
+layout_mode = 0
+
+[node name="CutRedWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="3"]
+layout_mode = 0
+
+[node name="GreenWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="4"]
+layout_mode = 0
+
+[node name="CutGreenWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="5"]
+layout_mode = 0
+
+[node name="YellowWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="6"]
+layout_mode = 0
+
+[node name="CutYellowWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="7"]
+layout_mode = 0
 
 [connection signal="disable_interaction" from="Coin/InteractionManager" to="cat" method="_on_interaction_manager_disable_interaction"]
 [connection signal="unlock_phonebooth" from="Coin/InteractionManager" to="Phonebooth" method="_on_interaction_manager_unlock_phonebooth"]
