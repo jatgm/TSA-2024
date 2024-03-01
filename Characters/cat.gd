@@ -88,3 +88,11 @@ func _on_interaction_manager_freeze_cat():
 
 func _on_house_3_unfreeze_cat():
 	moving = true
+	step+=1
+	print(step)
+
+
+func _on_area_2d_area_entered(area):
+	if step == 6:
+		position.x = 2744.898
+		position.y = 705.503

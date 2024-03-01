@@ -2,6 +2,8 @@ extends InteractionManager
 
 var text = ""
 
+var interacter
+
 signal freeze_cat
 signal unfreezeCat
 signal teleportCatToHouse
@@ -14,8 +16,9 @@ func unhover() -> void:
 	$House3.material.set_shader_parameter("opacity", 0)
 
 func recieve_interaction(interacter) -> void:
-	#if interacter.step == 5:
-	teleportToHouse()
+	interacter = interacter
+	if interacter.step == 5:
+		teleportToHouse()
 		
 func exit_bound() -> void: # These two can be overriden 
 	pass
@@ -24,6 +27,7 @@ func _on_button_pressed():
 	if text.to_upper() == "CATLITTER":
 		$InteractionManager/Cypher.visible = false
 		$AnimationPlayer.play("complete_level")
+	   
 		unfreezeCat.emit() 
 		 
 func teleportToHouse():
