@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=97 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b5s33kn80k8xh" path="res://objects/coin.tscn" id="9_yjatu"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
+[ext_resource type="Script" path="res://Levels/RainParticles.gd" id="15_2dilr"]
 [ext_resource type="AudioStream" uid="uid://cxa1oed02kwdv" path="res://Audio/Rain And Thunder Strikes-SoundBible.com-2084356876.mp3" id="15_rpp8k"]
 [ext_resource type="Texture2D" uid="uid://vdas54pbu2p5" path="res://Art/car.png" id="16_0hrji"]
 [ext_resource type="PackedScene" uid="uid://brw0p47a2i52p" path="res://objects/phonebooth.tscn" id="17_hoya0"]
@@ -37,11 +38,13 @@
 [ext_resource type="Script" path="res://Hitboxes/Interactions/sticky_note_interaction.gd" id="33_6lffh"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/firsthouseinteraction.gd" id="33_iuei2"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/house_1_interaction.gd" id="33_udstx"]
-[ext_resource type="Texture2D" uid="uid://bndq1ch25iw43" path="res://Art/cipher.png" id="33_x6md6"]
-[ext_resource type="Script" path="res://Levels/OMG.gd" id="34_wrho7"]
 [ext_resource type="PackedScene" uid="uid://0kla80l6fl5a" path="res://wires.tscn" id="35_45dkj"]
 [ext_resource type="PackedScene" uid="uid://vhgfnfstypc1" path="res://GAMEOVER.tscn" id="36_cew4g"]
 [ext_resource type="Texture2D" uid="uid://b8a40c5r475sr" path="res://Art/stickynote.png" id="37_0ys2d"]
+[ext_resource type="Texture2D" uid="uid://b5rwfc7s6uxqp" path="res://Art/Floor.png" id="38_dhgbp"]
+[ext_resource type="Script" path="res://Hitboxes/safe_manager.gd" id="40_8phnt"]
+[ext_resource type="Texture2D" uid="uid://oakm0bidvbwk" path="res://Art/safe.png" id="41_m8n3a"]
+[ext_resource type="Texture2D" uid="uid://bndq1ch25iw43" path="res://Art/cipher.png" id="42_pejua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utyam"]
 texture = ExtResource("2_3mu73")
@@ -258,7 +261,7 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/opacity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_164ab"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slobj"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
@@ -930,6 +933,83 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
 shader_parameter/opacity = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad0gh"]
+size = Vector2(28.5, 31.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aodkx"]
+size = Vector2(26.5, 33.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bos77"]
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoxg1"]
+size = Vector2(20, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxlsa"]
+size = Vector2(29, 32)
+
+[sub_resource type="Animation" id="Animation_ks7dq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yw5gg"]
+resource_name = "complete_level"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmfcr"]
+_data = {
+"RESET": SubResource("Animation_ks7dq"),
+"complete_level": SubResource("Animation_yw5gg")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kj05"]
@@ -1032,7 +1112,7 @@ material = SubResource("ShaderMaterial_4pph8")
 scene_file_text = "res://json/backup_dog_dialogue.json"
 
 [node name="dog4" parent="." instance=ExtResource("6_1ssjp")]
-position = Vector2(336, -74)
+position = Vector2(65, 7)
 backup_dog = true
 
 [node name="dog_sprite" parent="dog4/InteractionManager" index="3"]
@@ -1056,6 +1136,7 @@ emission_shape = 3
 emission_rect_extents = Vector2(200, 200)
 gravity = Vector2(-30, 300)
 color = Color(0.65098, 0.686275, 1, 1)
+script = ExtResource("15_2dilr")
 
 [node name="RainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
 stream = ExtResource("15_rpp8k")
@@ -1070,7 +1151,7 @@ volume_db = -7.0
 bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
-material = SubResource("ShaderMaterial_164ab")
+material = SubResource("ShaderMaterial_slobj")
 metadata/_edit_lock_ = true
 
 [node name="Streetlamp" type="Sprite2D" parent="."]
@@ -1309,72 +1390,147 @@ shape = SubResource("RectangleShape2D_xdfeg")
 material = SubResource("ShaderMaterial_jceu4")
 texture = ExtResource("32_18mi1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="HOUSE 3"]
-visible = false
-script = ExtResource("34_wrho7")
-
-[node name="ColorRect" type="ColorRect" parent="HOUSE 3/CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -276.0
-offset_right = 457.0
-offset_bottom = 245.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.329412, 0.627451, 0.54902, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="HOUSE 3/CanvasLayer"]
-position = Vector2(660, 156)
-scale = Vector2(5.28333, 5.28333)
-texture = ExtResource("33_x6md6")
-
-[node name="Label" type="Label" parent="HOUSE 3/CanvasLayer"]
-offset_left = 567.0
-offset_top = 492.0
-offset_right = 996.0
-offset_bottom = 518.0
-text = "note for grandma: password is \"TCSKHSSDQ\"! love you <3 "
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HOUSE 3/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="LineEdit" type="LineEdit" parent="HOUSE 3/CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -39.5
-offset_right = 95.0
-offset_bottom = 39.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-placeholder_text = "Password"
-max_length = 10
-
-[node name="Button" type="Button" parent="HOUSE 3/CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 68.0
-offset_right = 80.0
-offset_bottom = 118.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "SUBMIT"
-
 [node name="Node2D" parent="HOUSE 3" instance=ExtResource("36_cew4g")]
 position = Vector2(-1152, 32)
+
+[node name="ColorRect" type="ColorRect" parent="HOUSE 3"]
+z_index = -1
+offset_left = 405.0
+offset_top = -354.0
+offset_right = 1213.0
+offset_bottom = 102.0
+color = Color(0, 0, 0, 1)
+
+[node name="Floor" type="Sprite2D" parent="HOUSE 3"]
+z_index = -1
+position = Vector2(805, -140)
+texture = ExtResource("38_dhgbp")
+
+[node name="TeleportPoint" type="Node2D" parent="HOUSE 3"]
+position = Vector2(797, -93)
+
+[node name="InteractionManager" parent="HOUSE 3" instance=ExtResource("32_roq0d")]
+script = ExtResource("40_8phnt")
+
+[node name="CollisionShape2d" parent="HOUSE 3/InteractionManager" index="0"]
+position = Vector2(788, -163)
+shape = SubResource("RectangleShape2D_ad0gh")
+
+[node name="CollisionShape2d" parent="HOUSE 3/InteractionManager/Bound" index="0"]
+position = Vector2(786.75, -162.75)
+shape = SubResource("RectangleShape2D_aodkx")
+
+[node name="Safe" type="Sprite2D" parent="HOUSE 3/InteractionManager"]
+material = SubResource("ShaderMaterial_bos77")
+position = Vector2(792, -136)
+texture = ExtResource("41_m8n3a")
+
+[node name="Cypher" type="CanvasLayer" parent="HOUSE 3/InteractionManager"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="HOUSE 3/InteractionManager/Cypher"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -173.0
+offset_right = 322.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.670588, 0.443137, 0.458824, 1)
+
+[node name="TextureRect" type="TextureRect" parent="HOUSE 3/InteractionManager/Cypher/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -135.0
+offset_right = 288.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("42_pejua")
+
+[node name="TextEdit" type="TextEdit" parent="HOUSE 3/InteractionManager/Cypher/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -34.0
+offset_right = 166.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = " "
+
+[node name="Button" type="Button" parent="HOUSE 3/InteractionManager/Cypher/ColorRect"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 212.0
+offset_right = 359.0
+offset_bottom = 254.0
+text = "SUBMIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HOUSE 3/InteractionManager/Cypher/ColorRect"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 279.0
+offset_right = 418.0
+offset_bottom = 310.0
+text = "password: TCSKHSSDQ!"
+scroll_active = false
+
+[node name="CompleteLevel" type="CanvasLayer" parent="HOUSE 3/InteractionManager"]
+visible = false
+
+[node name="Label" type="Label" parent="HOUSE 3/InteractionManager/CompleteLevel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -77.0
+offset_right = -236.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Forest unlocked!"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HOUSE 3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HOUSE 3/StaticBody2D"]
+position = Vector2(748, -130.5)
+shape = SubResource("RectangleShape2D_yoxg1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="HOUSE 3/StaticBody2D"]
+position = Vector2(786, -163)
+shape = SubResource("RectangleShape2D_kxlsa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HOUSE 3/StaticBody2D"]
+position = Vector2(863, -130)
+shape = SubResource("RectangleShape2D_yoxg1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HOUSE 3/StaticBody2D"]
+position = Vector2(807, -199)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_yoxg1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HOUSE 3"]
+libraries = {
+"": SubResource("AnimationLibrary_bmfcr")
+}
 
 [node name="InteractionManager" parent="." instance=ExtResource("32_roq0d")]
 position = Vector2(998, 155)
@@ -1396,34 +1552,7 @@ z_index = -1
 material = SubResource("ShaderMaterial_7x3ha")
 texture = ExtResource("37_0ys2d")
 
-[node name="Wires" parent="." instance=ExtResource("35_45dkj")]
-
-[node name="CollisionShape2d" parent="Wires/InteractionManager3" index="0"]
-position = Vector2(1084.5, 117.219)
-
-[node name="BlueWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="0"]
-layout_mode = 0
-
-[node name="CutBlueWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="1"]
-layout_mode = 0
-
-[node name="RedWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="2"]
-layout_mode = 0
-
-[node name="CutRedWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="3"]
-layout_mode = 0
-
-[node name="GreenWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="4"]
-layout_mode = 0
-
-[node name="CutGreenWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="5"]
-layout_mode = 0
-
-[node name="YellowWirePic" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="6"]
-layout_mode = 0
-
-[node name="CutYellowWire" parent="Wires/InteractionManager3/CanvasLayer/TextureRect" index="7"]
-layout_mode = 0
+[node name="Wires2" parent="." instance=ExtResource("35_45dkj")]
 
 [connection signal="disable_interaction" from="Coin/InteractionManager" to="cat" method="_on_interaction_manager_disable_interaction"]
 [connection signal="unlock_phonebooth" from="Coin/InteractionManager" to="Phonebooth" method="_on_interaction_manager_unlock_phonebooth"]
@@ -1432,12 +1561,13 @@ layout_mode = 0
 [connection signal="shake_cam" from="cat" to="Camera2d" method="_on_cat_shake_cam"]
 [connection signal="cam_shake" from="Phonebooth/UI" to="Camera2d" method="_on_ui_cam_shake"]
 [connection signal="freeze_cat" from="HOUSE 3" to="cat" method="_on_house_3_freeze_cat"]
-[connection signal="text_changed" from="HOUSE 3/CanvasLayer/LineEdit" to="HOUSE 3" method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="HOUSE 3/CanvasLayer/Button" to="HOUSE 3" method="_on_button_pressed"]
-[connection signal="freeze_cat" from="Wires" to="cat" method="_on_wires_freeze_cat"]
-[connection signal="shake_cam" from="Wires" to="Camera2d" method="_on_wires_shake_cam"]
-[connection signal="unfreeze_cat" from="Wires" to="cat" method="_on_wires_unfreeze_cat"]
-[connection signal="unfreeze_cat" from="Wires/InteractionManager3/DialogPlayer" to="cat" method="_on_dialog_player_unfreeze_cat"]
+[connection signal="teleportCatToHouse" from="HOUSE 3" to="cat" method="_on_house_3_teleport_cat_to_house"]
+[connection signal="unBoundCamera" from="HOUSE 3" to="CameraBound" method="_on_house_3_un_bound_camera"]
+[connection signal="unBoundCamera" from="HOUSE 3" to="cat/RainParticles" method="_on_house_3_un_bound_camera"]
+[connection signal="unfreezeCat" from="HOUSE 3" to="cat" method="_on_house_3_unfreeze_cat"]
+[connection signal="freezeCat" from="HOUSE 3/InteractionManager" to="cat" method="_on_interaction_manager_freeze_cat"]
+[connection signal="text_changed" from="HOUSE 3/InteractionManager/Cypher/ColorRect/TextEdit" to="HOUSE 3" method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="HOUSE 3/InteractionManager/Cypher/ColorRect/Button" to="HOUSE 3" method="_on_button_pressed"]
 
 [editable path="Coin"]
 [editable path="Coin/InteractionManager"]
@@ -1452,6 +1582,7 @@ layout_mode = 0
 [editable path="InteractionManager2"]
 [editable path="HOUSE 3"]
 [editable path="HOUSE 3/Node2D"]
+[editable path="HOUSE 3/InteractionManager"]
 [editable path="InteractionManager"]
-[editable path="Wires"]
-[editable path="Wires/InteractionManager3"]
+[editable path="Wires2"]
+[editable path="Wires2/InteractionManager3"]

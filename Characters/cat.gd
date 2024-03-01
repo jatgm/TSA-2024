@@ -76,3 +76,15 @@ func _on_house_3_freeze_cat():
 
 func _on_dialog_player_unfreeze_cat():
 	moving = true
+
+func _on_house_3_teleport_cat_to_house():
+	position.x=2097.916
+	position.y = -150.653
+	print(position)
+
+
+func _on_interaction_manager_freeze_cat():
+	moving = false
+
+func _on_house_3_unfreeze_cat():
+	moving = true
