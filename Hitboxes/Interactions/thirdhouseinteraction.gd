@@ -17,14 +17,14 @@ func unhover() -> void:
 
 func recieve_interaction(interacter) -> void:
 	interacter = interacter
-	if interacter.step == 5:
+	if interacter.step == 7:
 		teleportToHouse()
 		
 func exit_bound() -> void: # These two can be overriden 
 	pass
 
 func _on_button_pressed():
-	if text.to_upper() == "CATLITTER":
+	if text.to_upper().strip_edges() == "CATLITTER":
 		$InteractionManager/Cypher.visible = false
 		$AnimationPlayer.play("complete_level")
 	   

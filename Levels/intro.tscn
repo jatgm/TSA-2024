@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=109 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -264,7 +264,7 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/opacity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6mo7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo2ml"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
@@ -959,33 +959,6 @@ size = Vector2(123.75, 85)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cv3yl"]
 size = Vector2(284, 105)
 
-[sub_resource type="Animation" id="Animation_c12vx"]
-resource_name = "complete_level"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InteractionManager/CompleteLevel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_8u5tc"]
 length = 0.001
 tracks/0/type = "value"
@@ -1013,6 +986,33 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_c12vx"]
+resource_name = "complete_level"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/CompleteLevel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8nyi"]
 _data = {
 "RESET": SubResource("Animation_8u5tc"),
@@ -1024,6 +1024,12 @@ size = Vector2(621.25, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57mbv"]
 size = Vector2(10, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b11oh"]
+size = Vector2(666.234, 49.41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atcq5"]
+size = Vector2(24.3206, 424.164)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpi1e"]
 size = Vector2(20, 47)
@@ -1165,7 +1171,7 @@ moving = false
 remote_path = NodePath("../../Camera2d")
 
 [node name="RainParticles" type="CPUParticles2D" parent="cat"]
-position = Vector2(0, -119)
+position = Vector2(-51, -118)
 amount = 1000
 draw_order = 1
 emission_shape = 3
@@ -1187,7 +1193,7 @@ volume_db = -7.0
 bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
-material = SubResource("ShaderMaterial_k6mo7")
+material = SubResource("ShaderMaterial_xo2ml")
 metadata/_edit_lock_ = true
 
 [node name="Streetlamp" type="Sprite2D" parent="."]
@@ -2128,6 +2134,28 @@ texture = ExtResource("43_sa3hx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HOUSE 3/Trees/TreeSprite3/StaticBody2D"]
 shape = SubResource("RectangleShape2D_57mbv")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="HOUSE 3/Trees"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HOUSE 3/Trees/StaticBody2D"]
+position = Vector2(1503, 928)
+scale = Vector2(1.39659, 0.89578)
+shape = SubResource("RectangleShape2D_b11oh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HOUSE 3/Trees/StaticBody2D"]
+position = Vector2(1428, 582)
+scale = Vector2(1.39659, 0.89578)
+shape = SubResource("RectangleShape2D_b11oh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HOUSE 3/Trees/StaticBody2D"]
+position = Vector2(1841, 769)
+scale = Vector2(1.39659, 0.89578)
+shape = SubResource("RectangleShape2D_atcq5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="HOUSE 3/Trees/StaticBody2D"]
+position = Vector2(1122, 772)
+scale = Vector2(1.39659, 0.89578)
+shape = SubResource("RectangleShape2D_atcq5")
+
 [node name="InteractionManager2" parent="HOUSE 3" instance=ExtResource("32_roq0d")]
 position = Vector2(1458, 839)
 script = ExtResource("44_eeb0k")
@@ -2150,10 +2178,10 @@ position = Vector2(-2610, -807)
 
 [node name="Label3" parent="HOUSE 3/InteractionManager2/Node2D/CanvasLayer/ColorRect" index="2"]
 text = "Thank you for playing!
-TSA 2023-2024, 
+
 by Jason Zhou, Alaina Sood, Esther Sun, 
 Juniper Rowell, Geetika Oruganti
-Team 2052-2"
+"
 
 [node name="InteractionManager" parent="." instance=ExtResource("32_roq0d")]
 position = Vector2(998, 155)
@@ -2175,7 +2203,10 @@ z_index = -1
 material = SubResource("ShaderMaterial_7x3ha")
 texture = ExtResource("37_0ys2d")
 
-[node name="Wires2" parent="." instance=ExtResource("35_45dkj")]
+[node name="Wires" parent="." instance=ExtResource("35_45dkj")]
+
+[node name="DialogPlayer" parent="Wires/InteractionManager3" index="6" node_paths=PackedStringArray("cat")]
+cat = NodePath("../../../cat")
 
 [connection signal="disable_interaction" from="Coin/InteractionManager" to="cat" method="_on_interaction_manager_disable_interaction"]
 [connection signal="unlock_phonebooth" from="Coin/InteractionManager" to="Phonebooth" method="_on_interaction_manager_unlock_phonebooth"]
@@ -2192,6 +2223,10 @@ texture = ExtResource("37_0ys2d")
 [connection signal="text_changed" from="HOUSE 3/InteractionManager/Cypher/ColorRect/TextEdit" to="HOUSE 3" method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="HOUSE 3/InteractionManager/Cypher/ColorRect/Button" to="HOUSE 3" method="_on_button_pressed"]
 [connection signal="area_entered" from="HOUSE 3/Area2D" to="cat" method="_on_area_2d_area_entered"]
+[connection signal="freeze_cat" from="Wires" to="cat" method="_on_wires_freeze_cat"]
+[connection signal="shake_cam" from="Wires" to="cat" method="_on_wires_shake_cam"]
+[connection signal="unfreeze_cat" from="Wires" to="cat" method="_on_wires_unfreeze_cat"]
+[connection signal="unfreeze_cat" from="Wires/InteractionManager3/DialogPlayer" to="cat" method="_on_dialog_player_unfreeze_cat"]
 
 [editable path="Coin"]
 [editable path="Coin/InteractionManager"]
@@ -2211,5 +2246,5 @@ texture = ExtResource("37_0ys2d")
 [editable path="HOUSE 3/InteractionManager2"]
 [editable path="HOUSE 3/InteractionManager2/Node2D"]
 [editable path="InteractionManager"]
-[editable path="Wires2"]
-[editable path="Wires2/InteractionManager3"]
+[editable path="Wires"]
+[editable path="Wires/InteractionManager3"]

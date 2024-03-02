@@ -191,32 +191,36 @@ scale = Vector2(10.7709, 10.7709)
 texture = ExtResource("12_316fh")
 expand_mode = 1
 
-[node name="BlueButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
-offset_left = 447.0
-offset_top = 137.0
-offset_right = 502.0
-offset_bottom = 500.0
+[node name="BlueButtonNode" type="Button" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 39.0
+offset_bottom = 115.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
 
-[node name="RedButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
-offset_left = 528.0
-offset_top = 137.0
-offset_right = 583.0
-offset_bottom = 500.0
+[node name="RedButtonNode" type="Button" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 10.0
+offset_right = 54.0
+offset_bottom = 116.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
 
-[node name="GreenButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
-offset_left = 594.0
-offset_top = 146.0
-offset_right = 649.0
-offset_bottom = 509.0
+[node name="GreenButtonNode" type="Button" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 11.0
+offset_right = 78.0
+offset_bottom = 116.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
 
-[node name="YellowButtonNode" type="Button" parent="InteractionManager3/CanvasLayer"]
-offset_left = 666.0
-offset_top = 143.0
-offset_right = 721.0
-offset_bottom = 506.0
+[node name="YellowButtonNode" type="Button" parent="InteractionManager3/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 13.0
+offset_right = 98.0
+offset_bottom = 115.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cg0hp")
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="InteractionManager3"]
@@ -251,10 +255,10 @@ libraries = {
 "": SubResource("AnimationLibrary_bmfcr")
 }
 
-[connection signal="pressed" from="InteractionManager3/CanvasLayer/BlueButtonNode" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="InteractionManager3/CanvasLayer/RedButtonNode" to="." method="_on_red_button_node_pressed"]
-[connection signal="pressed" from="InteractionManager3/CanvasLayer/GreenButtonNode" to="." method="_on_green_button_node_pressed"]
-[connection signal="pressed" from="InteractionManager3/CanvasLayer/YellowButtonNode" to="." method="_on_yellow_button_node_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/TextureRect/BlueButtonNode" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/TextureRect/RedButtonNode" to="." method="_on_red_button_node_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/TextureRect/GreenButtonNode" to="." method="_on_green_button_node_pressed"]
+[connection signal="pressed" from="InteractionManager3/CanvasLayer/TextureRect/YellowButtonNode" to="." method="_on_yellow_button_node_pressed"]
 [connection signal="done" from="InteractionManager3/DialogPlayer" to="." method="_on_dialog_player_done"]
 
 [editable path="InteractionManager3"]

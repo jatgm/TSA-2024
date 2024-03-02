@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @export var moving: bool = true
 @export var is_sprite_visible: bool = true
-var step = 0
+@export var step = 0
 
 #when script starts we get this var
 @onready var animation_player = $AnimationPlayer
@@ -88,11 +88,19 @@ func _on_interaction_manager_freeze_cat():
 
 func _on_house_3_unfreeze_cat():
 	moving = true
-	step+=1
+	step = 8
 	print(step)
 
 
 func _on_area_2d_area_entered(area):
-	if step == 6:
+	if step == 8:
 		position.x = 2744.898
 		position.y = 705.503
+		$RainParticles.visible = true 
+	else:
+		$ReminderAnimation.play("remind")
+		shake_cam.emit()
+
+
+func _on_wires_shake_cam():
+	shake_cam.emit(1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bt5eokyn64m8k"]
+[gd_scene load_steps=33 format=3 uid="uid://bt5eokyn64m8k"]
 
 [ext_resource type="Script" path="res://Characters/cat.gd" id="1_8tuak"]
 [ext_resource type="Script" path="res://Characters/Hurtbox.gd" id="2_atask"]
@@ -332,8 +332,6 @@ states/walk/node = SubResource("AnimationNodeBlendSpace2D_e6ri6")
 states/walk/position = Vector2(536.5, 99.9375)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_aooj2"), "walk", "blinking", SubResource("AnimationNodeStateMachineTransition_ybwfx"), "blinking", "walk", SubResource("AnimationNodeStateMachineTransition_or2g3")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_373li"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1yhx"]
 radius = 4.0
 
@@ -342,6 +340,66 @@ size = Vector2(23, 17.9999)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anr7n"]
 size = Vector2(26, 26)
+
+[sub_resource type="Animation" id="Animation_exwi1"]
+resource_name = "remind"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label2:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lrvtq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label2:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80jjv"]
+_data = {
+"RESET": SubResource("Animation_lrvtq"),
+"remind": SubResource("Animation_exwi1")
+}
 
 [node name="cat" type="CharacterBody2D"]
 collision_layer = 2
@@ -372,10 +430,11 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2fmnh")
+}
 tree_root = SubResource("AnimationNodeStateMachine_6qfud")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_373li")
 parameters/walk/blend_position = Vector2(0.20291, -0.80786)
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
@@ -398,12 +457,32 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_anr7n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+visible = false
+offset_right = 867.0
+offset_bottom = 154.0
 theme_override_font_sizes/font_size = 40
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -437.0
+offset_top = 51.0
+offset_right = 437.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "I should go check out this safe first..."
+horizontal_alignment = 1
+
+[node name="ReminderAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_80jjv")
+}
 
 [connection signal="damage_taken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]
 
